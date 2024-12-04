@@ -1,8 +1,18 @@
-const {readFileSync, writeFileSync} = require('fs');
-const {join} = require('path');
-const model = {
-    file: join(__dirname, '../data', 'products.json'),
-    index: () => JSON.parse(readFileSync(model.file)),
-    one: id => model.index().find(e => e.id == id)
+const fs = require('fs');
+const path = require('path');
+
+const productFilePath = path.join(__dirname, '../data/product.json');
+
+const productModel = {
+  getAllProducts: () => {
+    const data = fs.readFileSync(productFilePath);
+    return JSON.parse(data);
+  },
+
+  getProductById: (id) => {
+    const products = productModel.getAllProducts();
+    return products.find(product => product.id === parseInt(id));
+  }
 };
-module.exports = model;
+
+module.exports = productModel;

@@ -1,3 +1,6 @@
-const {static} = require('express');
-const {join} = require('path');
-module.exports = folder => static(join(__dirname,folder))
+const express = require('express');
+const path = require('path');
+
+const staticModule = express.static(path.join(__dirname, '../public'));
+
+module.exports = staticModule;

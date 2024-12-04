@@ -1,0 +1,29 @@
+<!-- views/checkout.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    
+    <% if (cart.length === 0) { %>
+        <p>No hay productos en el carrito.</p>
+    <% } else { %>
+        <ul>
+            <% cart.forEach(item => { %>
+                <li>
+                    <%= item.name %> - $<%= item.price %> x <%= item.quantity %>
+                </li>
+            <% }) %>
+        </ul>
+        <h3>Total: $<%= total %></h3>
+
+        <form action="/checkout/process" method="POST">
+            <button type="submit">Ir a Pagar</button>
+        </form>
+    <% } %>
+</body>
+</html>

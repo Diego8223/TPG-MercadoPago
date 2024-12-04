@@ -1,28 +1,23 @@
-const {index,one} = require('../models/product.model');
+const products = require('../data/products.json'); // Asegúrate de que la ruta y el archivo JSON estén correctos
 
-module.exports ={
-    index: (req,res) => res.render('home',{
-        products:index(),
-        styles:['home']
-    }),
-    // Step 3
-    addCart: (req,res) => {
-        // Find Product in DB
-        // let product = ???
-        // Check product exist in cart
-        // Case 1: Exist and update quantity
-        // Case 2: Add cart and set quantity
-        return res.send("Add a new product")
-    },
-    // Step 5
-    updateCart: (req,res) => {
-        // Check quantity
-        // Case 1: Is equal to zero then remove product
-        // Case 2: Update all cart items setting quantity in product selected
-        return res.send("Update quantity")
-    }, 
-    // Step 6
-    removeCart: (req,res) =>{
-        return res.send("Remove a product from the cart")
+// Mostrar todos los productos
+const showProducts = (req, res) => {
+    res.render('product', { products });
+};
+
+// Mostrar detalles de un producto
+const showProduct = (req, res) => {
+    const productId = parseInt(req.params.id, 10); // Convertir el ID a número
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+        res.render('item', { product });
+    } else {
+        res.status(404).send('Producto no encontrado');
     }
-}
+};
+
+module.exports = {
+    showProducts,
+    showProduct
+};

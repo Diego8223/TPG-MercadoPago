@@ -1,18 +1,7 @@
-// Step 7
+// modules/mercadopago.js
+const mercadopago = require('mercadopago');
 
-// const ??? = require(???)
-// const credential = ??? 
-// let server = ???
-// const success = ???
-// const failure = ???
-// const pending = ???
-/*
-const mp  = async (???,???,???) => {
-    try {
-        // Magic
-    } catch (error) {
-        throw new Error(error)
-    }
-}
-module.exports = mp
-*/
+// Configura MercadoPago con tus credenciales
+mercadopago.configurations.setAccessToken('TU_ACCESS_TOKEN_DE_MERCADOPAGO');
+
+module.exports = mercadopago;

@@ -1,14 +1,27 @@
-<li>
-    <picture>
-        <img src="/<%= image %>" alt="">
-    </picture>
-    <section>
-        <h2><%= name %> <span class="price">$<%= price %></span></h2>
-        <form action="/cart/add" method="post">
-            <input type="hidden" name="id" value="<%= id %>" />
-            <button type="submit">
-                <i class="fa-solid fa-plus"></i>
-            </button>
-        </form>
-    </section>
-</li>
+<!-- views/product.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Productos</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <a href="/item/<%= product.id %>"><%= product.name %></a> - $<%= product.price %>
+                <form action="/checkout/add-to-cart" method="POST">
+                    <input type="hidden" name="id" value="<%= product.id %>">
+                    <input type="hidden" name="name" value="<%= product.name %>">
+                    <input type="hidden" name="price" value="<%= product.price %>">
+                    <input type="number" name="quantity" value="1" min="1">
+                    <button type="submit">Agregar al carrito</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <a href="/checkout">Ver Carrito</a>
+</body>
+</html>

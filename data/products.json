@@ -1,26 +1,17 @@
 [
-    {   
-        "id": 1,
-        "name": "Cat Black",
-        "price": 25,
-        "image": "cat-1.png"
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 100,
+      "description": "Description of product 1",
+      "image": "product1.jpg"
     },
     {
-        "id": 2,
-        "name": "Cat Yoga",
-        "price": 7,
-        "image": "cat-2.png"
-    },
-    {
-        "id": 3,
-        "name": "Cat Snow",
-        "price": 10,
-        "image": "cat-3.png"
-    },
-    {
-        "id": 4,
-        "name": "Cat Happiness",
-        "price": 25,
-        "image": "cat-4.png"
+      "id": 2,
+      "name": "Product 2",
+      "price": 200,
+      "description": "Description of product 2",
+      "image": "product2.jpg"
     }
-]
+  ]
+  
